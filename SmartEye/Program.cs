@@ -2,11 +2,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.IdentityModel.JsonWebTokens;
-using System.Security.Claims;
 using SmartEye.Auth;
-using System.IdentityModel.Tokens.Jwt;
-using JwtRegisteredClaimNames = System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames;
 using SmartEye.User;
 using Microsoft.AspNetCore.Authorization;
 using SmartEye.Models;
@@ -62,7 +58,7 @@ app.MapPost("/token", [AllowAnonymous] async (HttpContext http, ITokenService to
     }
 
     var token = tokenService.BuildToken(builder.Configuration["Jwt:Key"], builder.Configuration["Jwt:Issuer"], builder.Configuration["Jwt:Audience"], userDto);
-    await http.Response.WriteAsJsonAsync(new { token = token });
+    await http.Response.WriteAsJsonAsync(new { token });
     return;
 });
 

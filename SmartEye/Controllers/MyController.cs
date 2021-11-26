@@ -19,11 +19,12 @@ namespace SmartEye.Controllers
         [HttpPost]
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<JsonResult> Act(HttpContext http, [FromBody] JsonContent myParam)
+        public async Task<JsonResult> Act([FromBody] JsonContent myParam)
         {
-            await http.Response.WriteAsJsonAsync("authoriezed");
-            return new JsonResult(myParam);
+            return
+                 new JsonResult(myParam);
         }
+     
 
         /**
          * 
@@ -33,6 +34,7 @@ namespace SmartEye.Controllers
             var dbContext = http.RequestServices.GetService<TodoDbContext>();
             var todoItems = await dbContext.TodoItems.Where(todoItem => todoItem.User
                 == user.Identity.Name).ToListAsync();
+        await http.Response.WriteAsJsonAsync("authoriezed");
          */
     }
 }
