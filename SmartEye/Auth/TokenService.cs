@@ -9,7 +9,7 @@ namespace SmartEye.Auth
 {
     public class TokenService : ITokenService
     {
-        private TimeSpan ExpiryDuration = new TimeSpan(0, 30, 0);
+        private TimeSpan ExpiryDuration = new(0, 30, 0);
         public string BuildToken(string key, string issuer, string audience, UserModel user)
         {
             var claims = new[]
