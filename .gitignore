@@ -1,3 +1,5 @@
 /.vs
 /SmartEye/obj
 /.vscode
+/SmartEye/bin/Debug/*
+/SmartEye/appsettings.Development.json

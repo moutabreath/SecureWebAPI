@@ -4,7 +4,7 @@ namespace SmartEye.User
 {
     public class UserRepositoryInMemoryService : IUserRepositoryService
     {
-        private List<UserModel> _users => new()
+        private static List<UserModel> _users => new()
         {
             new("JeyJey", "Binks"),
         };

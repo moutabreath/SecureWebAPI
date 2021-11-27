@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SmartEye.Models;
 
 namespace SmartEye.Controllers
 {
@@ -19,10 +20,13 @@ namespace SmartEye.Controllers
         [HttpPost]
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<JsonResult> Act([FromBody] JsonContent myParam)
+        public async Task<JsonResult> Act([FromBody] SampleModel myParam)
         {
-            return
-                 new JsonResult(myParam);
+            await Task.Run(() =>
+            {
+                return new JsonResult(myParam);
+            });
+            return new JsonResult(myParam);
         }
      
 
